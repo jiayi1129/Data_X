@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<span id = "dataxparent">
+    <H1 id = datax class = "serif w3-animate-opacity">DataX Introduces you to more dynamic ways to present your data</H1>
+</span>
+<div class = "container boxcenter">
+    <form action="/login" method="post">
+      {{ form.hidden_tag() }}
+        <div class="form-group" name="username" placeholder="Username" type="text">
+          {{ form.username.label(class="form-control-label") }}
+
+          {% if form.username.errors %}
+            {{ form.username(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.username(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+        <div class="form-group" name="password" placeholder="Password" type="password">
+            {{ form.password.label(class="form-control-label") }}
+            {% if form.password.errors %}
+              {{ form.password(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+<script>
+    document.body.classList.add('js-loading');
+
+    window.addEventListener("load", showPage);
+
+    function showPage() {
+    document.body.classList.remove('js-loading');
+    }
+</script>
+
+{% endblock %}

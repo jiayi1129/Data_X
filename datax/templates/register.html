@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<span id = "dataxparent">
+    <H1 id = datax class = "serif w3-animate-opacity">Register, Log In, and Start Creating</H1>
+</span>
+<div class = "container boxcenter">
+    <form action="" method="post" id = "register">
+      {{ form.hidden_tag() }}
+        <div class="form-group" name="username" id = "username" placeholder="Username">
+          {{ form.username.label(class="form-control-label") }}
+
+          {% if form.username.errors %}
+            {{ form.username(class="form-control form-control-lg is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.username(class="form-control form-control-lg") }}
+          {% endif %}
+        </div>
+        <div class="form-group" name="password" placeholder="Password" type="password">
+            {{ form.password.label(class="form-control-label") }}
+            {% if form.password.errors %}
+              {{ form.password(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.password(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group" name="confirmation" placeholder="Confirmation" type="password">
+            {{ form.confirm_password.label(class="form-control-label") }}
+            {% if form.confirm_password.errors %}
+              {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.confirm_password.errors %}
+                  <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+            {% else %}
+              {{ form.confirm_password(class="form-control form-control-lg") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
